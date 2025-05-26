@@ -14,7 +14,7 @@ The Smart Clinic Management System requires structured data for core entities li
 - `password`: VARCHAR(255), NOT NULL  
   -- Hashed password for secure login.
 - `phone`: VARCHAR(20)  
-  -- Optional phone number for contact.
+  -- Optional phone number for contact, max length aligns with JPA validation.
 
 ### Table: doctors
 - `id`: INT, Primary Key, AUTO_INCREMENT  
@@ -28,7 +28,10 @@ The Smart Clinic Management System requires structured data for core entities li
 - `specialization`: VARCHAR(100)  
   -- Optional field for doctor's specialization (e.g., "Cardiology").
 - `phone`: VARCHAR(20)  
-  -- Optional phone number for contact.
+  -- Optional phone number, max length aligns with JPA validation (@Pattern("\\d{10}"), @Size(max = 20)).
+- `available_times`: TEXT  
+  -- Stores a JSON or comma-separated list of available time slots (e.g., "2025-05-27 09:00, 2025-05-27 10:00").  
+  -- Will be mapped as an @ElementCollection in the JPA Doctor model.
 
 ### Table: appointments
 - `id`: INT, Primary Key, AUTO_INCREMENT  
@@ -39,12 +42,12 @@ The Smart Clinic Management System requires structured data for core entities li
   -- References the patient for this appointment.
 - `appointment_time`: DATETIME, NOT NULL  
   -- Date and time of the appointment, required.
-- `status`: ENUM('Scheduled', 'Completed', 'Cancelled'), NOT NULL, DEFAULT 'Scheduled'  
-  -- Appointment status, using ENUM for readability and validation.
+- `status`: INT, NOT NULL, DEFAULT 0  
+  -- Appointment status (0 = Scheduled, 1 = Completed, 2 = Cancelled), aligns with JPA model.
 - `duration`: INT, NOT NULL, DEFAULT 60  
   -- Duration in minutes (default 1 hour).
 
--- Constraint: To prevent overlapping appointments, a check constraint or application logic should ensure that `appointment_time` and `duration` don’t overlap for the same `doctor_id`.
+-- Constraint: To prevent overlapping appointments, application logic should ensure that `appointment_time` and `duration` don’t overlap for the same `doctor_id`.  
 -- On delete: If a patient or doctor is deleted, appointments should be cancelled (application logic) rather than cascading delete, to retain history.
 
 ### Table: admins
