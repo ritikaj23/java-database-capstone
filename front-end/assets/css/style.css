@@ -1,3 +1,4 @@
+/* Global styles for Clinic Management System */
 body {
     margin: 0;
     font-family: 'Roboto', Arial, sans-serif;
@@ -8,7 +9,37 @@ body {
     padding: 10px 20px;
 }
 
-…}
+.logo-section {
+    display: flex;
+    align-items: center;
+}
+
+.logo-title {
+    margin-left: 10px;
+    font-size: 1.5rem;
+}
+
+nav {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+nav a, nav button {
+    padding: 5px 10px;
+    text-decoration: none;
+    color: #015c5d;
+}
+
+nav select {
+    padding: 5px;
+}
+
+.footer-container {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px 0;
+}
 
 .footer-column a {
     display: block;
