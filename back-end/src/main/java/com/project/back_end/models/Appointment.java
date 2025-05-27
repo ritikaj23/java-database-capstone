@@ -1,47 +1,36 @@
+// Appointment.java
 package com.project.back_end.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Future;
 import jakarta.validation.constraints.NotNull;
-
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
 public class Appointment {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @NotNull(message = "Doctor cannot be null")
+    @NotNull
     private Doctor doctor;
 
     @ManyToOne
-    @NotNull(message = "Patient cannot be null")
+    @NotNull
     private Patient patient;
 
     @Future(message = "Appointment time must be in the future")
-    @NotNull(message = "Appointment time cannot be null")
     private LocalDateTime appointmentTime;
 
-    @NotNull(message = "Status cannot be null")
-    private int status; // 0 = Scheduled, 1 = Completed, 2 = Cancelled
+    @NotNull
+    private int status;
 
-    @NotNull(message = "Duration cannot be null")
-    private int duration; // Duration in minutes
-
-    // Helper Methods
     @Transient
     public LocalDateTime getEndTime() {
-        return appointmentTime.plusMinutes(duration);
+        return appointmentTime.plusHours(1);
     }
 
     @Transient
@@ -93,13 +82,5 @@ public class Appointment {
 
     public void setStatus(int status) {
         this.status = status;
-    }
-
-    public int getDuration() {
-        return duration;
-    }
-
-    public void setDuration(int duration) {
-        this.duration = duration;
     }
 }

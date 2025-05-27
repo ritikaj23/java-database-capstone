@@ -1,40 +1,33 @@
+// Patient.java
 package com.project.back_end.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.Email;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Pattern;
-import jakarta.validation.constraints.Size;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 public class Patient {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @NotNull(message = "Name cannot be null")
-    @Size(min = 3, max = 100, message = "Name must be between 3 and 100 characters")
+    @NotNull
+    @Size(min = 3, max = 100)
     private String name;
 
-    @NotNull(message = "Email cannot be null")
-    @Email(message = "Email must be a valid email address")
+    @NotNull
+    @Email
     private String email;
 
-    @NotNull(message = "Password cannot be null")
-    @Size(min = 6, message = "Password must be at least 6 characters")
+    @NotNull
+    @Size(min = 6)
     private String password;
 
-    @NotNull(message = "Phone number cannot be null")
+    @NotNull
     @Pattern(regexp = "\\d{10}", message = "Phone number must be 10 digits")
-    @Size(max = 20, message = "Phone number cannot exceed 20 characters")
     private String phone;
 
-    @NotNull(message = "Address cannot be null")
-    @Size(max = 255, message = "Address cannot exceed 255 characters")
+    @NotNull
+    @Size(max = 255)
     private String address;
 
     // Getters and Setters
