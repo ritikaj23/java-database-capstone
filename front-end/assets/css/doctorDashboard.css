@@ -1,0 +1,124 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.main-content {
+    flex-grow: 1;
+    padding: 20px;
+    background-image: url('../images/background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+#searchBar, #dateFilter, #todayBtn {
+    padding: 10px;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+#searchBar {
+    flex-grow: 1;
+    max-width: 300px;
+}
+
+#todayBtn {
+    background-color: #015c5d;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#todayBtn:hover {
+    background-color: #017d7e;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+    background-color: rgba(1, 92, 93, 0.8);
+    color: white;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ccc;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tbody tr:hover {
+    background-color: #e0f7fa;
+}
+
+.prescription-btn {
+    padding: 5px 10px;
+    background-color: #015c5d;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.prescription-btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.noPatientRecord {
+    font-style: italic;
+    color: #666;
+    text-align: center;
+    padding: 20px;
+}
+
+@media (max-width: 600px) {
+    .controls {
+        flex-direction: column;
+    }
+
+    #searchBar, #dateFilter, #todayBtn {
+        width: 100%;
+    }
+
+    table {
+        font-size: 0.9rem;
+    }
+}

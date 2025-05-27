@@ -1,0 +1,18 @@
+body {
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+}
+
+.header, .footer {
+    background-color: #f8f8f8;
+    padding: 10px 20px;
+}
+
+…}
+
+.footer-column a {
+    display: block;
+    color: #015c5d;
+    text-decoration: none;
+    margin: 5px 0;
+}
