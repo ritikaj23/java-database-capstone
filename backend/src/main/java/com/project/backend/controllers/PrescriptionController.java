@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.backend.models.Prescription;
-import com.project.backnd.services.AppointmentService;
+import com.project.backend.services.AppointmentService;
 import com.project.backend.services.PrescriptionService;
 import com.project.backend.services.Service;
 

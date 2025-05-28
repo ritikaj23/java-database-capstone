@@ -13,12 +13,12 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.project.back_end.DTO.AppointmentDTO;
-import com.project.back_end.models.Appointment;
-import com.project.back_end.models.Patient;
-import com.project.back_end.repo.AppointmentRepository;
-import com.project.back_end.repo.DoctorRepository;
-import com.project.back_end.repo.PatientRepository;
+import com.project.backend.DTO.AppointmentDTO;
+import com.project.backend.models.Appointment;
+import com.project.backend.models.Patient;
+import com.project.backend.repo.AppointmentRepository;
+import com.project.backend.repo.DoctorRepository;
+import com.project.backend.repo.PatientRepository;
 
 import jakarta.transaction.Transactional;
 
@@ -26,13 +26,13 @@ import jakarta.transaction.Transactional;
 public class AppointmentService {
 
     private final AppointmentRepository appointmentRepository;
-    private final com.project.back_end.services.Service service;
+    private final com.project.backend.services.Service service;
     private final TokenService tokenService;
     private final PatientRepository patientRepository;
     private final DoctorRepository doctorRepository;
 
     public AppointmentService(AppointmentRepository appointmentRepository,
-            com.project.back_end.services.Service service, TokenService tokenService,
+            com.project.backend.services.Service service, TokenService tokenService,
             PatientRepository patientRepository, DoctorRepository doctorRepository) {
         this.appointmentRepository = appointmentRepository;
         this.service = service;

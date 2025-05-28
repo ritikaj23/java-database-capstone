@@ -9,11 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.project.back_end.DTO.AppointmentDTO;
-import com.project.back_end.models.Appointment;
-import com.project.back_end.models.Patient;
-import com.project.back_end.repo.AppointmentRepository;
-import com.project.back_end.repo.PatientRepository;
+import com.project.backend.DTO.AppointmentDTO;
+import com.project.backend.models.Appointment;
+import com.project.backend.models.Patient;
+import com.project.backend.repo.AppointmentRepository;
+import com.project.backend.repo.PatientRepository;
 
 import jakarta.transaction.Transactional;
 

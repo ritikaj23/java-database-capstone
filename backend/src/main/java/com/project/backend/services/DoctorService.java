@@ -15,11 +15,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
-import com.project.back_end.DTO.Login;
-import com.project.back_end.models.Appointment;
-import com.project.back_end.models.Doctor;
-import com.project.back_end.repo.AppointmentRepository;
-import com.project.back_end.repo.DoctorRepository;
+import com.project.backend.DTO.Login;
+import com.project.backend.models.Appointment;
+import com.project.backend.models.Doctor;
+import com.project.backend.repo.AppointmentRepository;
+import com.project.backend.repo.DoctorRepository;
 
 import jakarta.transaction.Transactional;
 

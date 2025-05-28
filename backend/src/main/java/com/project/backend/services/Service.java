@@ -1,4 +1,4 @@
-package com.project.back_end.services;
+package com.project.backend.services;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -10,14 +10,14 @@ import java.util.Optional;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import com.project.back_end.DTO.Login;
-import com.project.back_end.models.Admin;
-import com.project.back_end.models.Appointment;
-import com.project.back_end.models.Doctor;
-import com.project.back_end.models.Patient;
-import com.project.back_end.repo.AdminRepository;
-import com.project.back_end.repo.DoctorRepository;
-import com.project.back_end.repo.PatientRepository;
+import com.project.backend.DTO.Login;
+import com.project.backend.models.Admin;
+import com.project.backend.models.Appointment;
+import com.project.backend.models.Doctor;
+import com.project.backend.models.Patient;
+import com.project.backend.repo.AdminRepository;
+import com.project.backend.repo.DoctorRepository;
+import com.project.backend.repo.PatientRepository;
 
 @org.springframework.stereotype.Service
 public class Service {

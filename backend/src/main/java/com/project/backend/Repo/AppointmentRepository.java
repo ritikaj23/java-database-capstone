@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import com.project.back_end.models.Appointment;
+import com.project.backend.models.Appointment;
 
 import jakarta.transaction.Transactional;
 
@@ -38,5 +38,5 @@ public interface AppointmentRepository extends JpaRepository<Appointment, Long> 
 
     @Modifying
     @Query("UPDATE Appointment a SET a.status = :status WHERE a.id = :id")
-    void updateStatus(int status,long id);
+    void updateStatus(int status, long id);
 }

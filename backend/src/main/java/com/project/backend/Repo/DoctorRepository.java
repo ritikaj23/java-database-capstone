@@ -1,6 +1,6 @@
 package com.project.backend.repo;
 
-import com.project.back_end.models.Doctor;
+import com.project.backend.models.Doctor;
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;

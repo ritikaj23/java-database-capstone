@@ -5,7 +5,7 @@ import java.util.List;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 
-import com.project.back_end.models.Prescription;
+import com.project.backend.models.Prescription;
 
 public interface PrescriptionRepository extends MongoRepository<Prescription, String> {
     
