@@ -1,0 +1,47 @@
+.main-content {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.main-content h2 {
+    margin-bottom: 20px;
+    font-size: 24px;
+    color: #333;
+}
+
+.role-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.role-btn {
+    width: 150px;
+}
+
+.role-btn.selected {
+    background-color: #28a745;
+}
+
+.modal-content form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-content input {
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+@media (max-width: 600px) {
+    .role-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    .role-btn {
+        width: 100%;
+    }
+}

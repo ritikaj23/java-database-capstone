@@ -1,0 +1,69 @@
+.main-content h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.controls input, .controls button {
+    flex: 1;
+    min-width: 150px;
+}
+
+#patientTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+#patientTable th, #patientTable td {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: left;
+}
+
+#patientTable th {
+    background-color: rgba(1, 92, 93, 0.1);
+}
+
+#patientTable tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+#patientTable tr:hover {
+    background-color: #e9ecef;
+}
+
+.prescription-btn {
+    background-color: #007bff;
+    transform: scale(1);
+    transition: transform 0.2s, filter 0.2s;
+}
+
+.prescription-btn:hover {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.noPatientRecord {
+    text-align: center;
+    font-style: italic;
+    color: #666;
+}
+
+@media (max-width: 600px) {
+    .controls {
+        flex-direction: column;
+    }
+    #patientTable th, #patientTable td {
+        font-size: 14px;
+        padding: 8px;
+    }
+}

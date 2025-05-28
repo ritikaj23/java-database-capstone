@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Clinic - Admin Dashboard</title>
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/adminDashboard.css">
+    <script src="/js/util.js" defer></script>
+    <script src="/js/render.js" defer></script>
+    <script src="/js/components/header.js" defer></script>
+    <script src="/js/components/footer.js" defer></script>
+    <script src="/js/components/doctorCard.js" defer></script>
+    <script type="module" src="/js/services/adminDashboard.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div id="header"></div>
+            <main class="main-content">
+                <h1>Admin Dashboard</h1>
+                <div class="controls">
+                    <input type="text" id="searchBar" placeholder="Search Doctors...">
+                    <select id="filter-specialty">
+                        <option value="">All Specialties</option>
+                        <option value="Cardiology">Cardiology</option>
+                        <option value="Neurology">Neurology</option>
+                        <option value="Pediatrics">Pediatrics</option>
+                    </select>
+                    <select id="filter-time">
+                        <option value="">All Times</option>
+                        <option value="Morning">Morning</option>
+                        <option value="Afternoon">Afternoon</option>
+                    </select>
+                    <button id="add-doctor-btn" class="adminBtn">Add Doctor</button>
+                </div>
+                <div id="content" class="doctor-grid"></div>
+                <div id="modal" class="modal hidden">
+                    <span id="closeModal" class="close">&times;</span>
+                    <div id="modal-body"></div>
+                </div>
+            </main>
+            <div id="footer"></div>
+        </div>
+    </div>
+</body>
+</html>
