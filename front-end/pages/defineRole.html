@@ -3,12 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Your Role</title>
-    <link rel="icon" href="../assets/favicon.ico" />
-    <link rel="stylesheet" href="../assets/css/defineRole.css">
-    <link rel="stylesheet" href="../assets/css/style.css">
-    <script src="../js/components/header.js" defer></script>
-…        </div>
+    <title>Smart Clinic - Select Role</title>
+    <link rel="icon" href="/assets/favicon.ico">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/defineRole.css">
+    <script src="/js/util.js" defer></script>
+    <script src="/js/render.js" defer></script>
+    <script src="/js/components/header.js" defer></script>
+    <script src="/js/components/footer.js" defer></script>
+    <script type="module" src="/js/services/defineRole.js" defer></script>
+</head>
+<body>
+    <div class="container">
+        <div class="wrapper">
+            <div id="header"></div>
+            <main class="main-content">
+                <h2>Select Your Role</h2>
+                <div class="role-buttons">
+                    <button id="admin-btn" class="role-btn" onclick="selectRole('Admin')">Admin</button>
+                    <button id="doctor-btn" class="role-btn" onclick="selectRole('Doctor')">Doctor</button>
+                    <button id="patient-btn" class="role-btn" onclick="selectRole('Patient')">Patient</button>
+                </div>
+                <div id="modal" class="modal hidden">
+                    <span id="closeModal" class="close">&times;</span>
+                    <div id="modal-body"></div>
+                </div>
+            </main>
+            <div id="footer"></div>
+        </div>
     </div>
 </body>
 </html>

@@ -1,53 +1,61 @@
-import { API_BASE_URL } from '../config.js';
+import { config } from '../config/config.js';
 
-export async function getDoctors() {
-    const response = await fetch(`${API_BASE_URL}/doctors`, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-    });
-
-    if (!response.ok) throw new Error('Failed to fetch doctors');
-    return await response.json();
-}
-
-export async function saveDoctor(doctor, token) {
-    const response = await fetch(`${API_BASE_URL}/doctors`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
-        },
-        body: JSON.stringify(doctor)
-    });
-
-    if (!response.ok) throw new Error('Failed to save doctor');
-    return await response.json();
-}
-
-export async function filterDoctors({ search, time, specialty }) {
-    let url = `${API_BASE_URL}/doctors?`;
-    if (search) url += `search=${encodeURIComponent(search)}&`;
-    if (time) url += `time=${time}&`;
-    if (specialty) url += `specialty=${specialty}`;
-
-    const response = await fetch(url, {
-        method: 'GET',
-        headers: { 'Content-Type': 'application/json' }
-    });
-
-    if (!response.ok) throw new Error('Failed to filter doctors');
-    return await response.json();
-}
-
-export async function deleteDoctor(id, token) {
-    const response = await fetch(`${API_BASE_URL}/doctors/${id}`, {
-        method: 'DELETE',
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${token}`
+const doctorService = {
+    getDoctors: async (token) => {
+        try {
+            const response = await fetch(`${config.API_BASE_URL}/doctors`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (!response.ok) throw new Error('Failed to fetch doctors');
+            return await response.json();
+        } catch (error) {
+            console.error('Error fetching doctors:', error);
+            return [];
         }
-    });
+    },
+    saveDoctor: async (doctor, token) => {
+        try {
+            const response = await fetch(`${config.API_BASE_URL}/doctors`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify(doctor)
+            });
+            if (!response.ok) throw new Error('Failed to save doctor');
+            return await response.json();
+        } catch (error) {
+            console.error('Error saving doctor:', error);
+            return null;
+        }
+    },
+    filterDoctor: async (search = '', specialty = '', time = '', token) => {
+        try {
+            const query = new URLSearchParams({ search, specialty, time }).toString();
+            const response = await fetch(`${config.API_BASE_URL}/doctors?${query}`, {
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (!response.ok) throw new Error('Failed to filter doctors');
+            return await response.json();
+        } catch (error) {
+            console.error('Error filtering doctors:', error);
+            return [];
+        }
+    },
+    deleteDoctor: async (id, token) => {
+        try {
+            const response = await fetch(`${config.API_BASE_URL}/doctors/${id}`, {
+                method: 'DELETE',
+                headers: { 'Authorization': `Bearer ${token}` }
+            });
+            if (!response.ok) throw new Error('Failed to delete doctor');
+            return { success: true };
+        } catch (error) {
+            console.error('Error deleting doctor:', error);
+            return { success: false };
+        }
+    }
+};
 
-    if (!response.ok) throw new Error('Failed to delete doctor');
-    return { success: true };
-}
+export default doctorService;

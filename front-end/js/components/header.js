@@ -1,26 +1,13 @@
-function logout() {
-    localStorage.removeItem('userRole');
-    localStorage.removeItem('token');
-    window.location.href = 'defineRole.html';
-}
-
-function attachHeaderButtonListeners() {
-    const logoutBtn = document.getElementById('logoutBtn');
-    if (logoutBtn) {
-        logoutBtn.addEventListener('click', logout);
-    }
-}
-
 function renderHeader() {
     const headerDiv = document.getElementById('header');
-
     if (window.location.pathname.includes('defineRole.html')) {
         localStorage.removeItem('userRole');
+        localStorage.removeItem('token');
         headerDiv.innerHTML = `
             <header class="header">
                 <div class="logo-section">
-                    <img src="../assets/logo.png" alt="Logo" />
-                    <span class="logo-title">Clinic Management</span>
+                    <img src="/assets/images/logo/Logo.png" alt="Smart Clinic Logo" style="height: 50px;">
+                    <span class="logo-title">Smart Clinic</span>
                 </div>
             </header>
         `;
@@ -29,48 +16,55 @@ function renderHeader() {
 
     const role = localStorage.getItem('userRole');
     const token = localStorage.getItem('token');
-
     let headerContent = `
         <header class="header">
             <div class="logo-section">
-                <img src="../assets/logo.png" alt="Logo" />
-                <span class="logo-title">Clinic Management</span>
+                <img src="/assets/images/logo/Logo.png" alt="Smart Clinic Logo" style="height: 50px;">
+                <span class="logo-title">Smart Clinic</span>
             </div>
             <nav>
     `;
 
-    if (role === 'admin') {
+    if (token && role) {
         headerContent += `
-            <button id="addDoctorBtn">Add Doctor</button>
-            <a href="#" id="logoutBtn">Logout</a>
-        `;
-    } else if (role === 'doctor') {
-        headerContent += `
-            <a href="#" id="logoutBtn">Logout</a>
-        `;
-    }
-
-    if (role) {
-        headerContent += `
-            <select id="roleSelector">
-                <option value="admin" ${role === 'admin' ? 'selected' : ''}>Admin</option>
-                <option value="doctor" ${role === 'doctor' ? 'selected' : ''}>Doctor</option>
+            <span>Welcome, ${role}</span>
+            <select id="roleSelector" class="select-dropdown">
+                <option value="Admin" ${role === 'Admin' ? 'selected' : ''}>Admin</option>
+                <option value="Doctor" ${role === 'Doctor' ? 'selected' : ''}>Doctor</option>
+                <option value="Patient" ${role === 'Patient' ? 'selected' : ''}>Patient</option>
             </select>
+            <button id="logout-btn" class="button">Logout</button>
         `;
+        if (role === 'Admin') {
+            headerContent += `<button id="add-doctor-btn" class="button">Add Doctor</button>`;
+        }
+    } else {
+        headerContent += `<a href="/pages/defineRole.html">Select Role</a>`;
     }
 
     headerContent += `</nav></header>`;
     headerDiv.innerHTML = headerContent;
 
     attachHeaderButtonListeners();
+}
 
+function attachHeaderButtonListeners() {
     const roleSelector = document.getElementById('roleSelector');
+    const logoutBtn = document.getElementById('logout-btn');
     if (roleSelector) {
         roleSelector.addEventListener('change', (e) => {
             const selectedRole = e.target.value;
-            window.location.href = `${selectedRole}Dashboard.html`;
+            localStorage.setItem('userRole', selectedRole);
+            window.location.href = `${selectedRole.toLowerCase()}Dashboard.html`;
+        });
+    }
+    if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('userRole');
+            window.location.href = '/pages/defineRole.html';
         });
     }
 }
 
-renderHeader();
+document.addEventListener('DOMContentLoaded', renderHeader);

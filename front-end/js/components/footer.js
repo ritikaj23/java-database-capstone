@@ -4,23 +4,18 @@ function renderFooter() {
         <footer class="footer">
             <div class="footer-container">
                 <div class="footer-column">
-                    <h4>Clinic Management</h4>
-                    <p>Providing quality healthcare solutions.</p>
+                    <h4>Smart Clinic</h4>
+                    <p>© 14/02/2023 Smart Clinic Management System. All rights reserved.</p>
                 </div>
                 <div class="footer-column">
                     <h4>Links</h4>
-                    <a href="defineRole.html">Home</a>
-                    <a href="#">About</a>
-                    <a href="#">Contact</a>
-                </div>
-                <div class="footer-column">
-                    <h4>Support</h4>
-                    <a href="#">FAQ</a>
-                    <a href="#">Help</a>
+                    <a href="/about">About</a>
+                    <a href="/contact">Contact</a>
+                    <a href="/privacy">Privacy Policy</a>
                 </div>
             </div>
         </footer>
     `;
 }
 
-renderFooter();
+document.addEventListener('DOMContentLoaded', renderFooter);
